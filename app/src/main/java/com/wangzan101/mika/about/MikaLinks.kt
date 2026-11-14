@@ -17,6 +17,8 @@ object MikaLinks {
      * 避免用户被引导安装签名不兼容的官方包。建立自己的 Releases 仓库后改回 URL。
      */
     const val LATEST_RELEASE_API = ""
+    const val X = "https://x.com/wangzan101"
+    const val X_HANDLE = "@wangzan101"
 
     /** 反馈时预先填进问题模板的设备与版本信息。 */
     data class Device(
