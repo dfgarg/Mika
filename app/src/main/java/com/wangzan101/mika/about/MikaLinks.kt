@@ -11,8 +11,12 @@ object MikaLinks {
     const val README = "$REPO#readme"
     const val RELEASES = "$REPO/releases"
     const val NEW_ISSUE = "$REPO/issues/new"
-    /** 检查更新只问 GitHub 发布页(不登录,每小时有次数限制)。 */
-    const val LATEST_RELEASE_API = "https://api.github.com/repos/wangzan101/Mika/releases/latest"
+    /**
+     * 检查更新只问 GitHub 发布页(不登录,每小时有次数限制)。
+     * 【银月巴巴塔 fork】尚未建立自己的发布仓库:置空即关闭在线更新检查,
+     * 避免用户被引导安装签名不兼容的官方包。建立自己的 Releases 仓库后改回 URL。
+     */
+    const val LATEST_RELEASE_API = ""
 
     /** 反馈时预先填进问题模板的设备与版本信息。 */
     data class Device(

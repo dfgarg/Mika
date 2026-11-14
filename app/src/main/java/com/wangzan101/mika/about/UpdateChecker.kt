@@ -109,8 +109,10 @@ class UpdateChecker(
         }
     }
 
-    /** GitHub 上最新的发布;没查到为空。 */
-    internal fun fetchLatest(): ReleaseInfo? = runCatching { Releases.fromGitHub(get(releaseApi), deviceAbis) }.getOrNull()
+    /** GitHub 上最新的发布;没查到为空。【银月 fork】更新源未配置(空 URL)时直接视为无更新。 */
+    internal fun fetchLatest(): ReleaseInfo? =
+        if (releaseApi.isBlank()) null
+        else runCatching { Releases.fromGitHub(get(releaseApi), deviceAbis) }.getOrNull()
 
     private fun get(url: String): String {
         val req = Request.Builder().url(url)
