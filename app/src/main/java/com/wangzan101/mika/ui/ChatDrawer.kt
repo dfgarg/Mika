@@ -355,6 +355,7 @@ fun ChatDrawer(
     searchFilter: SearchArchiveFilter = SearchArchiveFilter.All,
     onSearchFilterChange: (SearchArchiveFilter) -> Unit = {},
     onNew: () -> Unit,
+    onInbox: () -> Unit = {},
     onPlans: () -> Unit,
     onMemory: () -> Unit,
     onBrowser: () -> Unit,
@@ -443,6 +444,8 @@ fun ChatDrawer(
         if (!searchActive && !selecting && !archivedView) Column(Modifier.padding(horizontal = 12.dp, vertical = 6.dp)) {
             if (showPersonal) NavEntry(MikaIcons.Message, stringResource(R.string.drawer_personal), onClick = onPersonal)
             NavEntry(MikaIcons.New, stringResource(R.string.chat_new), enabled = canSwitch, onClick = onNew)
+            // TODO(i18n): 迁移到 string 资源
+            NavEntry(MikaIcons.Bell, "收件箱", onClick = onInbox)
             NavEntry(MikaIcons.Clock, stringResource(R.string.drawer_plans), onClick = onPlans)
             NavEntry(MikaIcons.Heart, stringResource(R.string.memory_and_skills), onClick = onMemory)
             NavEntry(MikaIcons.Globe, stringResource(R.string.drawer_browser), onClick = onBrowser)
@@ -1038,6 +1041,7 @@ fun ChatWithDrawer(
     onBrowser: () -> Unit,
     onFiles: () -> Unit = {},
     onScreens: () -> Unit = {},
+    onInbox: () -> Unit = {},
     onSettings: () -> Unit,
     onAbout: () -> Unit = {},
     /** 有新版本:侧栏「关于 Mika」带小红点。 */
@@ -1295,6 +1299,7 @@ fun ChatWithDrawer(
                     searchFilter = searchFilter,
                     onSearchFilterChange = { searchFilter = it },
                     onNew = { close { vm.newConversation(); onRegularChat() } },
+                    onInbox = { leave(onInbox) },
                     onPersonal = { leave(onPersonal) },
                     showPersonal = showPersonal,
                     onPlans = { leave(onPlans) },
