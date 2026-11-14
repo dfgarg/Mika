@@ -4,19 +4,23 @@ import com.wangzan101.mika.R
 import com.wangzan101.mika.i18n.tr
 import java.net.URLEncoder
 
-/** Mika 对外的地址都在这里:仓库、问题、检查更新用的两个来源。换地址只改这一处。 */
+/**
+ * Mika 对外的地址都在这里:仓库、问题、检查更新用的两个来源。换地址只改这一处。
+ * 【银月巴巴塔 fork】仓库与更新源指向自有 fork(dfgarg/Mika);
+ * 上游署名保留在 README 与 NOTICE(遵循 Apache-2.0)。
+ */
 object MikaLinks {
-    const val REPO = "https://github.com/wangzan101/Mika"
-    const val REPO_LABEL = "github.com/wangzan101/Mika"
+    const val REPO = "https://github.com/dfgarg/Mika"
+    const val REPO_LABEL = "github.com/dfgarg/Mika"
     const val README = "$REPO#readme"
     const val RELEASES = "$REPO/releases"
     const val NEW_ISSUE = "$REPO/issues/new"
     /**
      * 检查更新只问 GitHub 发布页(不登录,每小时有次数限制)。
-     * 【银月巴巴塔 fork】尚未建立自己的发布仓库:置空即关闭在线更新检查,
-     * 避免用户被引导安装签名不兼容的官方包。建立自己的 Releases 仓库后改回 URL。
+     * 【银月巴巴塔 fork】指向自有仓库的 Releases;尚未发布 release 时接口 404,
+     * fetchLatest 已按"无更新"安全处理。
      */
-    const val LATEST_RELEASE_API = ""
+    const val LATEST_RELEASE_API = "https://api.github.com/repos/dfgarg/Mika/releases/latest"
     const val X = "https://x.com/wangzan101"
     const val X_HANDLE = "@wangzan101"
 
